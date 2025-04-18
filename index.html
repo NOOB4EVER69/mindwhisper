@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أصل الحكاية جواك - صحتك النفسية أولوية</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --accent-color: #fd79a8;
+            --text-color: #2d3436;
+            --bg-color: #f5f6fa;
+            --card-color: #ffffff;
+            --dark-primary: #4834d4;
+            --dark-secondary: #686de0;
+            --dark-accent: #eb4d4b;
+            --dark-text: #dfe6e9;
+            --dark-bg: #1e272e;
+            --dark-card: #2f3640;
+            --success-color: #00b894;
+            --warning-color: #fdcb6e;
+            --danger-color: #d63031;
+            --info-color: #0984e3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        body.calm-mode {
+            background-color: #e8f4f8;
+            --primary-color: #74b9ff;
+            --secondary-color: #a5dff9;
+            --accent-color: #7ed6df;
+            animation: calmBackground 15s infinite alternate;
+        }
+
+        body.dark-mode.calm-mode {
+            background-color: #1a2a3a;
+            --primary-color: #487eb0;
+            --secondary-color: #40739e;
+            --accent-color: #4b7bec;
+        }
+
+        @keyframes calmBackground {
+            0% {
+                background-color: #e8f4f8;
+            }
+
+            50% {
+                background-color: #d5e8f7;
+            }
+
+            100% {
+                background-color: #e2f3f8;
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes breathe {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.dark-mode header {
+            background: linear-gradient(135deg, var(--dark-primary), var(--dark-secondary));
+        }
+
+        .header-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            animation: fadeIn 1s ease;
+        }
+
+        .header-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .calm-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .calm-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            justify-content: space-around;
+            background-color: var(--card-color);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .nav-tabs {
+            background-color: var(--dark-card);
+        }
+
+        .nav-tab {
+            flex: 1;
+            text-align: center;
+            padding: 1rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        body.dark-mode .nav-tab {
+            color: var(--dark-text);
+        }
+
+        .nav-tab i {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .nav-tab.active {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        body.dark-mode .nav-tab.active {
+            color: var(--dark-accent);
+        }
+
+        /* Main Content */
+        .container {
+            padding: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        body.dark-mode .section-title {
+            color: var(--dark-accent);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            right: 25%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 3px;
+        }
+
+        body.dark-mode .section-title::after {
+            background: linear-gradient(to right, var(--dark-accent), var(--dark-primary));
+        }
+
+        /* Emotion Decoder */
+        .emotion-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .emotion-btn {
+            background-color: var(--card-color);
+            border: 2px solid var(--secondary-color);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        body.dark-mode .emotion-btn {
+            background-color: var(--dark-card);
+            border-color: var(--dark-secondary);
+        }
+
+        .emotion-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        body.dark-mode .emotion-btn:hover {
+            border-color: var(--dark-accent);
+        }
+
+        .emotion-btn i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        body.dark-mode .emotion-btn i {
+            color: var(--dark-accent);
+        }
+
+        .emotion-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .emotion-result {
+            background-color: var(--card-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease;
+            display: none;
+        }
+
+        body.dark-mode .emotion-result {
+            background-color: var(--dark-card);
+        }
+
+        .emotion-validation {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        body.dark-mode .emotion-validation {
+            color: var(--dark-accent);
+        }
+
+        .emotion-tip {
+            background-color: rgba(106, 176, 76, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            border-right: 4px solid var(--success-color);
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .emotion-tip {
+            background-color: rgba(106, 176, 76, 0.2);
+        }
+
+        .emotion-tip-title {
+            font-weight: 600;
+            color: var(--success-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .power-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.5s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark-mode .power-card {
+            background: linear-gradient(135deg, var(--dark-primary), var(--dark-accent));
+        }
+
+        .power-card i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Reflection Cards */
+        .reflection-card {
+            background-color: var(--card-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        body.dark-mode .reflection-card {
+            background-color: var(--dark-card);
+        }
+
+        .reflection-question {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        body.dark-mode .reflection-question {
+            color: var(--dark-accent);
+        }
+
+        .reflection-textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            border: 2px solid var(--secondary-color);
+            border-radius: 8px;
+            resize: vertical;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        body.dark-mode .reflection-textarea {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            border-color: var(--dark-secondary);
+        }
+
+        .reflection-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+        }
+
+        body.dark-mode .reflection-textarea:focus {
+            border-color: var(--dark-accent);
+            box-shadow: 0 0 0 3px rgba(253, 121, 168, 0.3);
+        }
+
+        .save-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .save-btn {
+            background-color: var(--dark-accent);
+        }
+
+        .save-btn:hover {
+            background-color: var(--dark-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .save-btn:hover {
+            background-color: var(--dark-primary);
+        }
+
+        .new-question-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+        }
+
+        body.dark-mode .new-question-btn {
+            background-color: var(--dark-secondary);
+        }
+
+        .new-question-btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .new-question-btn:hover {
+            background-color: var(--dark-primary);
+        }
+
+        .saved-entries {
+            margin-top: 2rem;
+        }
+
+        .entry {
+            background-color: var(--card-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        body.dark-mode .entry {
+            background-color: var(--dark-card);
+            border-left-color: var(--dark-accent);
+        }
+
+        .entry-date {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        body.dark-mode .entry-date {
+            color: var(--dark-secondary);
+        }
+
+        .entry-question {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .entry-answer {
+            white-space: pre-wrap;
+        }
+
+        /* Awareness Test */
+        .test-question {
+            background-color: var(--card-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease;
+        }
+
+        body.dark-mode .test-question {
+            background-color: var(--dark-card);
+        }
+
+        .test-question-text {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .test-options {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .test-option {
+            background-color: var(--bg-color);
+            border: 2px solid var(--secondary-color);
+            border-radius: 8px;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-align: center;
+            flex: 1;
+            margin: 0 0.5rem;
+        }
+
+        body.dark-mode .test-option {
+            background-color: var(--dark-bg);
+            border-color: var(--dark-secondary);
+        }
+
+        .test-option:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        body.dark-mode .test-option:hover {
+            background-color: var(--dark-secondary);
+        }
+
+        .test-option.selected {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        body.dark-mode .test-option.selected {
+            background-color: var(--dark-accent);
+            border-color: var(--dark-accent);
+        }
+
+        .test-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .test-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .test-btn {
+            background-color: var(--dark-secondary);
+        }
+
+        .test-btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .test-btn:hover {
+            background-color: var(--dark-primary);
+        }
+
+        .test-btn:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        body.dark-mode .test-btn:disabled {
+            background-color: #555;
+        }
+
+        .test-result {
+            background-color: var(--card-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease;
+            display: none;
+            text-align: center;
+        }
+
+        body.dark-mode .test-result {
+            background-color: var(--dark-card);
+        }
+
+        .test-result-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        body.dark-mode .test-result-title {
+            color: var(--dark-accent);
+        }
+
+        .test-result-text {
+            margin-bottom: 1.5rem;
+        }
+
+        .test-result-score {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .restart-test-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        body.dark-mode .restart-test-btn {
+            background-color: var(--dark-accent);
+        }
+
+        .restart-test-btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .restart-test-btn:hover {
+            background-color: var(--dark-primary);
+        }
+
+        /* Profile Section */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        body.dark-mode .profile-avatar {
+            background: linear-gradient(135deg, var(--dark-primary), var(--dark-accent));
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-edit {
+            color: var(--secondary-color);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        body.dark-mode .profile-edit {
+            color: var(--dark-secondary);
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background-color: var(--card-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .stat-card {
+            background-color: var(--dark-card);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        body.dark-mode .stat-value {
+            color: var(--dark-accent);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        body.dark-mode .stat-label {
+            color: var(--dark-text);
+        }
+
+        .streak-container {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        body.dark-mode .streak-container {
+            background: linear-gradient(135deg, var(--dark-primary), var(--dark-accent));
+        }
+
+        .streak-value {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .streak-label {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .streak-subtext {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .emotion-history {
+            margin-top: 2rem;
+        }
+
+        .history-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        body.dark-mode .history-title {
+            color: var(--dark-accent);
+        }
+
+        .history-chart {
+            background-color: var(--card-color);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            height: 200px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+        }
+
+        body.dark-mode .history-chart {
+            background-color: var(--dark-card);
+        }
+
+        .chart-bar {
+            background: linear-gradient(to top, var(--primary-color), var(--secondary-color));
+            width: 10%;
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            transition: height 0.5s ease;
+        }
+
+        body.dark-mode .chart-bar {
+            background: linear-gradient(to top, var(--dark-accent), var(--dark-secondary));
+        }
+
+        .chart-label {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-color);
+        }
+
+        body.dark-mode .chart-label {
+            color: var(--dark-text);
+        }
+
+        /* Calm Mode Elements */
+        .breathing-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary-color), var(--secondary-color));
+            margin: 2rem auto;
+            animation: breathe 6s infinite ease-in-out;
+            display: none;
+            box-shadow: 0 0 20px rgba(108, 92, 231, 0.3);
+        }
+
+        body.dark-mode .breathing-circle {
+            background: radial-gradient(circle, var(--dark-accent), var(--dark-primary));
+            box-shadow: 0 0 20px rgba(253, 121, 168, 0.3);
+        }
+
+        .breathing-instruction {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            display: none;
+        }
+
+        body.dark-mode .breathing-instruction {
+            color: var(--dark-accent);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: var(--card-color);
+            border-radius: 12px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.3s ease;
+        }
+
+        body.dark-mode .modal-content {
+            background-color: var(--dark-card);
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        body.dark-mode .modal-title {
+            color: var(--dark-accent);
+        }
+
+        .modal-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--secondary-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        body.dark-mode .modal-input {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            border-color: var(--dark-secondary);
+        }
+
+        .modal-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        body.dark-mode .modal-input:focus {
+            border-color: var(--dark-accent);
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .modal-btn.cancel {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border: 2px solid var(--secondary-color);
+            margin-right: 0.5rem;
+        }
+
+        body.dark-mode .modal-btn.cancel {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            border-color: var(--dark-secondary);
+        }
+
+        .modal-btn.cancel:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        body.dark-mode .modal-btn.cancel:hover {
+            background-color: var(--dark-secondary);
+        }
+
+        .modal-btn.confirm {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            margin-left: 0.5rem;
+        }
+
+        body.dark-mode .modal-btn.confirm {
+            background-color: var(--dark-accent);
+        }
+
+        .modal-btn.confirm:hover {
+            background-color: var(--dark-primary);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--success-color);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+            animation: fadeIn 0.3s ease;
+            max-width: 300px;
+        }
+
+        .notification.error {
+            background-color: var(--danger-color);
+        }
+
+        .notification.warning {
+            background-color: var(--warning-color);
+            color: var(--text-color);
+        }
+
+        body.dark-mode .notification.warning {
+            color: var(--dark-text);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 480px) {
+            .header-title {
+                font-size: 1.5rem;
+            }
+
+            .emotion-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-tab {
+                font-size: 0.8rem;
+                padding: 0.8rem 0;
+            }
+
+            .nav-tab i {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Font Awesome Icons */
+        .fas,
+        .far {
+            font-family: 'Font Awesome';
+        }
+
+
+        /* About Page Styles */
+        .about-card {
+            background-color: var(--card-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .about-card {
+            background-color: var(--dark-card);
+        }
+
+        .about-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        body.dark-mode .about-title {
+            color: var(--dark-accent);
+        }
+
+        .about-text {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .reset-btn {
+            background-color: var(--danger-color);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .reset-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Add this to your existing nav-tabs style */
+        .nav-tabs {
+            /* ... existing styles ... */
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+        <h1 class="header-title">أصل الحكاية جواك</h1>
+        <p class="header-subtitle">رحلة استكشاف مشاعرك في سلام</p>
+        <button class="calm-toggle" id="calmToggle">
+            <i class="fas fa-spa"></i>
+        </button>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Emotion Decoder Section -->
+        <section class="section" id="emotionSection">
+            <h2 class="section-title">حاسس بإيه؟</h2>
+            <div class="emotion-grid" id="emotionGrid">
+                <!-- Emotions will be added by JavaScript -->
+            </div>
+            <div class="emotion-result" id="emotionResult">
+                <p class="emotion-validation" id="emotionValidation"></p>
+                <div class="emotion-tip">
+                    <p class="emotion-tip-title">نصيحة لليوم:</p>
+                    <p id="emotionTip"></p>
+                </div>
+            </div>
+            <div class="power-card" id="powerCard">
+                <i class="fas fa-quote-left"></i>
+                <p id="powerCardText"></p>
+            </div>
+            <div class="breathing-circle" id="breathingCircle"></div>
+            <p class="breathing-instruction" id="breathingInstruction"></p>
+        </section>
+
+        <!-- Reflection Cards Section -->
+        <section class="section" id="reflectionSection">
+            <h2 class="section-title">ورق التفكير</h2>
+            <div class="reflection-card">
+                <p class="reflection-question" id="reflectionQuestion"></p>
+                <textarea class="reflection-textarea" id="reflectionTextarea"
+                    placeholder="اكتب أفكارك هنا بحرية..."></textarea>
+                <button class="save-btn" id="saveBtn">حفظ</button>
+                <button class="new-question-btn" id="newQuestionBtn">سؤال جديد</button>
+            </div>
+            <div class="saved-entries" id="savedEntries">
+                <h3 class="history-title">إجاباتك السابقة</h3>
+                <!-- Entries will be added by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Awareness Test Section -->
+        <section class="section" id="testSection">
+            <h2 class="section-title">اختبر نفسك</h2>
+            <div class="test-question" id="testQuestionContainer">
+                <p class="test-question-text" id="testQuestionText"></p>
+                <div class="test-options">
+                    <div class="test-option" data-answer="yes">نعم</div>
+                    <div class="test-option" data-answer="no">لا</div>
+                </div>
+                <div class="test-nav">
+                    <button class="test-btn" id="prevQuestionBtn" disabled>السابق</button>
+                    <button class="test-btn" id="nextQuestionBtn">التالي</button>
+                </div>
+            </div>
+            <div class="test-result" id="testResult">
+                <h3 class="test-result-title" id="testResultTitle"></h3>
+                <p class="test-result-text" id="testResultText"></p>
+                <p class="test-result-score" id="testResultScore"></p>
+                <button class="restart-test-btn" id="restartTestBtn">إعادة الاختبار</button>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section class="section" id="profileSection">
+            <div class="profile-header">
+                <div class="profile-avatar" id="profileAvatar">?</div>
+                <h3 class="profile-name" id="profileName">زائر</h3>
+                <p class="profile-edit" id="profileEdit">تغيير الاسم</p>
+            </div>
+            <div class="streak-container">
+                <div class="streak-value" id="streakValue">0</div>
+                <div class="streak-label">يوم متتالي</div>
+                <div class="streak-subtext">تابع ليوم جديد غداً!</div>
+            </div>
+            <divclass="profile-stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="reflectionCount">0</div>
+                    <div class="stat-label">ورقة تفكير</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="emotionCheckCount">0</div>
+                    <div class="stat-label">تسجيل مشاعر</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="testCount">0</div>
+                    <div class="stat-label">اختبارات</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="powerCardsCount">0</div>
+                    <div class="stat-label">كروت قوة</div>
+                </div>
+    </div>
+    <div class="emotion-history">
+        <h3 class="history-title">تاريخ مشاعرك</h3>
+        <div class="history-chart" id="emotionChart">
+            <!-- Chart bars will be added by JavaScript -->
+        </div>
+    </div>
+    </section>
+    </div>
+    <!-- Navigation -->
+    <div class="nav-tabs">
+        <a href="#" class="nav-tab active" data-section="emotionSection">
+            <i class="fas fa-heart"></i>
+            <span>مشاعرك</span>
+        </a>
+        <a href="#" class="nav-tab" data-section="reflectionSection">
+            <i class="fas fa-pen"></i>
+            <span>ورق تفكير</span>
+        </a>
+        <a href="#" class="nav-tab" data-section="testSection">
+            <i class="fas fa-check-circle"></i>
+            <span>اختبر نفسك</span>
+        </a>
+        <a href="#" class="nav-tab" data-section="profileSection">
+            <i class="fas fa-user"></i>
+            <span>حسابي</span>
+        </a>
+    </div>
+
+    <!-- Name Change Modal -->
+    <div class="modal" id="nameModal">
+        <div class="modal-content">
+            <h3 class="modal-title">غير اسمك</h3>
+            <input type="text" class="modal-input" id="nameInput" placeholder="اكتب اسمك أو لقبك">
+            <div class="modal-buttons">
+                <button class="modal-btn cancel" id="cancelNameBtn">إلغاء</button>
+                <button class="modal-btn confirm" id="confirmNameBtn">تأكيد</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+    <!-- Navigation -->
+    <div class="nav-tabs">
+        <a href="#" class="nav-tab active" data-section="emotionSection">
+            <i class="fas fa-heart"></i>
+            <span>مشاعرك</span>
+        </a>
+        <a href="#" class="nav-tab" data-section="reflectionSection">
+            <i class="fas fa-pen"></i>
+            <span>ورق تفكير</span>
+        </a>
+        <a href="#" class="nav-tab" data-section="testSection">
+            <i class="fas fa-check-circle"></i>
+            <span>اختبر نفسك</span>
+        </a>
+        <a href="#" class="nav-tab" data-section="profileSection">
+            <i class="fas fa-user"></i>
+            <span>حسابي</span>
+        </a>
+        <a href="#" class="nav-tab" data-section="aboutSection">
+            <i class="fas fa-info-circle"></i>
+            <span>عن التطبيق</span>
+        </a>
+    </div>
+
+    <!-- Add this new section before the modals -->
+    <!-- About Section -->
+    <section class="section" id="aboutSection">
+        <h2 class="section-title">عن التطبيق</h2>
+        <div class="about-card">
+            <h3 class="about-title">أصل الحكاية جواك</h3>
+            <p class="about-text">
+                تطبيق مجاني باللهجة المصرية لمساعدة الناس على فهم مشاعرهم والاهتمام بصحتهم النفسية. التطبيق يعمل بدون
+                إنترنت وبياناتك كلها محفوظة على جهازك فقط.
+            </p>
+            <p class="about-text">
+                <strong>إزاي تستخدم التطبيق:</strong><br>
+                ١) اختار شعورك من قسم "حاسس بإيه؟"<br>
+                ٢) اكتب أفكارك في "ورق التفكير"<br>
+                ٣) اعرف أكتر عن نفسك من "اختبر نفسك"<br>
+                ٤) تابع تقدمك في "حسابي الشخصي"
+            </p>
+            <p class="about-text">
+                التطبيق ده مش بديل للعلاج النفسي، لكنه ممكن يكون بداية لرحلة فهم الذات.
+            </p>
+            <button class="reset-btn" id="resetBtn">
+                <i class="fas fa-trash-alt"></i> مسح كل البيانات
+            </button>
+        </div>
+    </section>
+
+
+    <div class="modal" id="resetModal">
+        <div class="modal-content">
+            <h3 class="modal-title">تأكيد مسح البيانات</h3>
+            <p style="margin-bottom: 1.5rem; text-align: center;">هل أنت متأكد أنك تريد حذف كل بياناتك؟ هذا الإجراء لا
+                يمكن التراجع عنه.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn cancel" id="cancelResetBtn">إلغاء</button>
+                <button class="modal-btn confirm" id="confirmResetBtn">نعم، احذف كل شيء</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // App Data
+        const emotions = [
+            {
+                name: "فرحان",
+                icon: "fa-smile",
+                validation: "حاسس إنك فرحان النهاردة؟ دا شيء حلو!",
+                tip: "حاول تشارك الفرحة دي مع حد قريب منك، أو اكتب عن اللي بيخليك فرحان في ورقة التفكير."
+            },
+            {
+                name: "زعلان",
+                icon: "fa-sad-tear",
+                validation: "حاسس إنك زعلان؟ دا طبيعي ومش غلط تحس بكدا.",
+                tip: "جرب تكتب عن اللي مزعلك في ورقة التفكير، أو اتكلم مع حد تثق فيه لو حاسس إنك محتاج كدا."
+            },
+            {
+                name: "قلقان",
+                icon: "fa-flushed",
+                validation: "حاسس بالقلق؟ مش لوحدك، كتير بنحس بكدا.",
+                tip: "خد نفس عميق، حاول تركز على الحاجات اللي قدامك دلوقتي ومتشغلش بالك بالمستقبل."
+            },
+            {
+                name: "مضغوط",
+                icon: "fa-tired",
+                validation: "حاسس إنك مضغوط؟ الضغط دا مش دايماً حاجة وحشة.",
+                tip: "جرب تمشي شوية لوحدك وتفكر بصوت عالي، أو قسم المهام الكبيرة لحاجات صغيرة."
+            },
+            {
+                name: "ملهم",
+                icon: "fa-lightbulb",
+                validation: "حاسس بالإلهام؟ استغل الطاقة دي أحسن استغلال!",
+                tip: "اكتب الأفكار اللي جاية في دماغك دلوقتي، وحاول تبدأ في حاجة جديدة بسيطة."
+            },
+            {
+                name: "محبط",
+                icon: "fa-frown-open",
+                validation: "حاسس بالإحباط؟ مش كل الأيام بتكون زيّ بعضها.",
+                tip: "خد وقتك في حاجة بتحبها، وافتكر إن المشاعر دي مؤقتة وهتعدي."
+            },
+            {
+                name: "مرتبك",
+                icon: "fa-meh",
+                validation: "حاسس بالارتباك؟ مش مشكلة تفضل كدا شوية.",
+                tip: "حاول ترتب أفكارك في نقاط، واكتبها في ورقة التفكير عشان تشوفها أوضح."
+            },
+            {
+                name: "هادئ",
+                icon: "fa-smile-beam",
+                validation: "حاسس بالهدوء؟ دا جو لطيف!",
+                tip: "استمتع باللحظة دي، وحاول تعمل حاجة بتحبها في الهدوء ده."
+            }
+        ];
+
+        const reflectionQuestions = [
+            "إيه الحاجة اللي مخلياك محتار أو مرتبك النهاردة؟",
+            "لو عندك فرصة تغير حاجة واحدة في يومك، هتغير إيه؟",
+            "إيه أكتر حاجة بتحس إنك ممتن ليها في حياتك؟",
+            "إيه التحدي اللي واجهته النهاردة وإزاي تعاملت معاه؟",
+            "إيه أكتر حاجة نفسك تعملها بس محتاج شجاعة أكتر؟",
+            "إيه الدرس اللي اتعلمته من موقف صعب عدّي عليك؟",
+            "لو حد قالك تعمل قائمة ب 3 حاجات بتحبها في نفسك، هتكتب إيه؟",
+            "إيه الحاجة اللي بتخليك تحس بالأمان؟",
+            "في إيه اللي بيساعدك لما تحس إنك مش طايق حاجة؟",
+            "إيه أكتر موقف ضحكت منه النهاردة؟",
+            "إيه الحاجة اللي نفسك تسمعها من حد قريب منك؟",
+            "إيه اللي بيخليك تحس إنك متقبل نفسك؟",
+            "إيه الحاجة الصغيرة اللي ممكن تعملها غداً عشان يومك يبقى أحسن؟",
+            "إيه أكتر حاجة بتحس إنك محتاج تدعم فيها؟",
+            "لو عندك رسالة لنفسك من سنة، هتكون إيه؟"
+        ];
+
+        const testQuestions = [
+            "بتحس إنك مش فاهم نفسك؟",
+            "بتتجاهل إحساسك علشان الناس؟",
+            "في حاجة بتخاف منها بس مش عارف تعبر عنها؟",
+            "بتحس إنك مش مرتاح في المكان اللي فيه؟",
+            "بتحس إنك مش عارف تركز في الحاجات المهمة؟",
+            "بتفضل تفضل لوحدك عن إنك تكون مع ناس؟",
+            "بتحس إنك مش عايز تكمل في حاجة كنت متحمس ليها قبل كدا؟",
+            "في حاجات كتير بتحس إنها فوق طاقتك؟",
+            "بتحس إنك مش عارف تنام كويس؟",
+            "بتحس إنك مش مرتاح لما حد يسألك عن مشاعرك؟"
+        ];
+
+        const testResults = [
+            {
+                title: "كل شيء على ما يرام",
+                description: "يبدو أنك في حالة جيدة وتتعامل مع مشاعرك بطريقة صحية. استمر في متابعة نفسك والاعتناء بصحتك النفسية.",
+                minScore: 0,
+                maxScore: 3
+            },
+            {
+                title: "في حاجات محتاجة تركيز",
+                description: "في بعض الجوانب اللي ممكن تاخد وقت أكتر في التفكير فيها. حاول تخصص وقت لنفسك عشان تفهم مشاعرك أكتر.",
+                minScore: 4,
+                maxScore: 6
+            },
+            {
+                title: "محتاج تنتبه لصحتك النفسية",
+                description: "مشاعرك ممكن تكون محتاجة دعم أكتر. حاول تتكلم مع حد تثق فيه، أو تلتمس مساعدة متخصص لو حاسس إنك محتاج.",
+                minScore: 7,
+                maxScore: 10
+            }
+        ];
+
+        const powerCards = [
+            "كل يوم بيعدي مش نهاية، ده فرصة جديدة.",
+            "المشاعر مش صح أو غلط، هي بس موجودة.",
+            "الضعف مش عيب، بل هو قوة لما نعترف بيه.",
+            "مافيش حد كامل، ودا الطبيعي.",
+            "الراحة مشرف، مش ضعف.",
+            "أحياناً الخطوة الصغيرة بتكون الأصعب والأهم.",
+            "مش لازم تكون قوي طول الوقت، بس لازم تكون صادق مع نفسك.",
+            "الوعي بالمشكلة هو أول طريق الحل.",
+            "مافيش مشاعر بتفضل للأبد، كل حاجة بتمر.",
+            "الاعتراف إنك محتاج مساعدة هو علامة قوة، مش ضعف."
+        ];
+
+        // DOM Elements
+        const emotionGrid = document.getElementById('emotionGrid');
+        const emotionResult = document.getElementById('emotionResult');
+        const emotionValidation = document.getElementById('emotionValidation');
+        const emotionTip = document.getElementById('emotionTip');
+        const powerCard = document.getElementById('powerCard');
+        const powerCardText = document.getElementById('powerCardText');
+        const breathingCircle = document.getElementById('breathingCircle');
+        const breathingInstruction = document.getElementById('breathingInstruction');
+        const reflectionQuestion = document.getElementById('reflectionQuestion');
+        const reflectionTextarea = document.getElementById('reflectionTextarea');
+        const saveBtn = document.getElementById('saveBtn');
+        const newQuestionBtn = document.getElementById('newQuestionBtn');
+        const savedEntries = document.getElementById('savedEntries');
+        const testQuestionText = document.getElementById('testQuestionText');
+        const testQuestionContainer = document.getElementById('testQuestionContainer');
+        const testResult = document.getElementById('testResult');
+        const testResultTitle = document.getElementById('testResultTitle');
+        const testResultText = document.getElementById('testResultText');
+        const testResultScore = document.getElementById('testResultScore');
+        const prevQuestionBtn = document.getElementById('prevQuestionBtn');
+        const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+        const restartTestBtn = document.getElementById('restartTestBtn');
+        const profileAvatar = document.getElementById('profileAvatar');
+        const profileName = document.getElementById('profileName');
+        const profileEdit = document.getElementById('profileEdit');
+        const reflectionCount = document.getElementById('reflectionCount');
+        const emotionCheckCount = document.getElementById('emotionCheckCount');
+        const testCount = document.getElementById('testCount');
+        const powerCardsCount = document.getElementById('powerCardsCount');
+        const streakValue = document.getElementById('streakValue');
+        const emotionChart = document.getElementById('emotionChart');
+        const navTabs = document.querySelectorAll('.nav-tab');
+        const sections = document.querySelectorAll('.section');
+        const themeToggle = document.getElementById('themeToggle');
+        const calmToggle = document.getElementById('calmToggle');
+        const nameModal = document.getElementById('nameModal');
+        const nameInput = document.getElementById('nameInput');
+        const cancelNameBtn = document.getElementById('cancelNameBtn');
+        const confirmNameBtn = document.getElementById('confirmNameBtn');
+        const notification = document.getElementById('notification');
+        const resetModal = document.getElementById('resetModal');
+        const cancelResetBtn = document.getElementById('cancelResetBtn');
+        const confirmResetBtn = document.getElementById('confirmResetBtn');
+
+        // App State
+        let currentEmotion = null;
+        let currentQuestionIndex = 0;
+        let testAnswers = [];
+        let currentTestQuestion = 0;
+        let userData = {
+            name: "زائر",
+            reflections: [],
+            emotions: [],
+            tests: [],
+            powerCards: 0,
+            lastVisit: null,
+            streak: 0
+        };
+
+        // Initialize the app
+        function init() {
+            loadUserData();
+            loadTheme();
+            setupEmotionGrid();
+            setupReflectionQuestion();
+            setupTest();
+            setupProfile();
+            setupEventListeners();
+            checkStreak();
+            showNotification("إزاي حالك النهاردة؟ اختار شعورك من القائمة.", 5000);
+        }
+
+        // Load user data from localStorage
+        function loadUserData() {
+            const savedData = localStorage.getItem('userData');
+            if (savedData) {
+                userData = JSON.parse(savedData);
+                profileName.textContent = userData.name;
+                profileAvatar.textContent = userData.name.charAt(0);
+                reflectionCount.textContent = userData.reflections.length;
+                emotionCheckCount.textContent = userData.emotions.length;
+                testCount.textContent = userData.tests.length;
+                powerCardsCount.textContent = userData.powerCards;
+                streakValue.textContent = userData.streak;
+
+                if (userData.reflections.length > 0) {
+                    renderSavedEntries();
+                }
+
+                updateEmotionChart();
+            }
+        }
+
+        // Save user data to localStorage
+        function saveUserData() {
+            localStorage.setItem('userData', JSON.stringify(userData));
+        }
+
+        // Load saved theme from localStorage
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const savedCalmMode = localStorage.getItem('calmMode');
+
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+
+            if (savedCalmMode === 'true') {
+                document.body.classList.add('calm-mode');
+                toggleCalmMode();
+            }
+        }
+
+        // Save theme preference
+        function saveTheme() {
+            const isDark = document.body.classList.contains('dark-mode');
+            const isCalm = document.body.classList.contains('calm-mode');
+
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            localStorage.setItem('calmMode', isCalm ? 'true' : 'false');
+        }
+
+        // Setup emotion grid
+        function setupEmotionGrid() {
+            emotionGrid.innerHTML = '';
+            emotions.forEach(emotion => {
+                const emotionBtn = document.createElement('div');
+                emotionBtn.className = 'emotion-btn';
+                emotionBtn.innerHTML = `
+            <i class="far ${emotion.icon}"></i>
+            <span class="emotion-name">${emotion.name}</span>
+        `;
+                emotionBtn.addEventListener('click', () => selectEmotion(emotion));
+                emotionGrid.appendChild(emotionBtn);
+            });
+        }
+
+        // Select an emotion
+        function selectEmotion(emotion) {
+            currentEmotion = emotion;
+            emotionValidation.textContent = emotion.validation;
+            emotionTip.textContent = emotion.tip;
+            emotionResult.style.display = 'block';
+
+            const today = new Date().toISOString().split('T')[0];
+            userData.emotions.push({
+                emotion: emotion.name,
+                date: today
+            });
+            emotionCheckCount.textContent = userData.emotions.length;
+
+            if (Math.random() > 0.5) {
+                showPowerCard();
+            }
+
+            saveUserData();
+            updateEmotionChart();
+        }
+
+        // Show a random power card
+        function showPowerCard() {
+            const randomCard = powerCards[Math.floor(Math.random() * powerCards.length)];
+            powerCardText.textContent = randomCard;
+            powerCard.style.display = 'block';
+
+            userData.powerCards++;
+            powerCardsCount.textContent = userData.powerCards;
+            saveUserData();
+        }
+
+        // Setup reflection question
+        function setupReflectionQuestion() {
+            currentQuestionIndex = Math.floor(Math.random() * reflectionQuestions.length);
+            reflectionQuestion.textContent = reflectionQuestions[currentQuestionIndex];
+            reflectionTextarea.value = '';
+        }
+
+        // Save reflection
+        function saveReflection() {
+            const answer = reflectionTextarea.value.trim();
+            if (answer === '') {
+                showNotification("اكتب حاجة قبل ما تحفظ!", 3000, "warning");
+                return;
+            }
+
+            const today = new Date().toISOString();
+            const reflection = {
+                question: reflectionQuestions[currentQuestionIndex],
+                answer: answer,
+                date: today
+            };
+
+            userData.reflections.push(reflection);
+            reflectionCount.textContent = userData.reflections.length;
+            saveUserData();
+
+            renderSavedEntries();
+            showNotification("تم حفظ إجابتك بنجاح!", 3000, "success");
+            reflectionTextarea.value = '';
+        }
+
+        // Render saved entries
+        function renderSavedEntries() {
+            savedEntries.innerHTML = '<h3 class="history-title">إجاباتك السابقة</h3>';
+
+            const sortedReflections = [...userData.reflections].sort((a, b) =>
+                new Date(b.date) - new Date(a.date)
+            );
+
+            sortedReflections.forEach((reflection, index) => {
+                if (index >= 5) return;
+
+                const entryDate = new Date(reflection.date);
+                const formattedDate = entryDate.toLocaleDateString('ar-EG', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+
+                const entry = document.createElement('div');
+                entry.className = 'entry';
+                entry.innerHTML = `
+            <div class="entry-date">${formattedDate}</div>
+            <div class="entry-question">${reflection.question}</div>
+            <div class="entry-answer">${reflection.answer}</div>
+        `;
+                savedEntries.appendChild(entry);
+            });
+        }
+
+        // Setup test
+        function setupTest() {
+            testAnswers = [];
+            currentTestQuestion = 0;
+            testQuestionContainer.style.display = 'block';
+            testResult.style.display = 'none';
+            updateTestQuestion();
+        }
+
+        // Update test question
+        function updateTestQuestion() {
+            testQuestionText.textContent = testQuestions[currentTestQuestion];
+            prevQuestionBtn.disabled = currentTestQuestion === 0;
+
+            document.querySelectorAll('.test-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+
+            if (testAnswers[currentTestQuestion] !== undefined) {
+                const selectedOption = document.querySelector(`.test-option[data-answer="${testAnswers[currentTestQuestion]}"]`);
+                if (selectedOption) {
+                    selectedOption.classList.add('selected');
+                }
+            }
+        }
+
+        // Select test answer
+        function selectTestAnswer(answer) {
+            testAnswers[currentTestQuestion] = answer;
+
+            document.querySelectorAll('.test-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.target.classList.add('selected');
+        }
+
+        // Go to next test question
+        function nextTestQuestion() {
+            if (testAnswers[currentTestQuestion] === undefined) {
+                showNotification("اختار إجابة قبل ما تكمل!", 3000, "warning");
+                return;
+            }
+
+            if (currentTestQuestion < testQuestions.length - 1) {
+                currentTestQuestion++;
+                updateTestQuestion();
+            } else {
+                finishTest();
+            }
+        }
+
+        // Go to previous test question
+        function prevTestQuestion() {
+            if (currentTestQuestion > 0) {
+                currentTestQuestion--;
+                updateTestQuestion();
+            }
+        }
+
+        // Finish test
+        function finishTest() {
+            const score = testAnswers.filter(answer => answer === 'yes').length;
+            let result = testResults.find(r => score >= r.minScore && score <= r.maxScore);
+
+            testResultTitle.textContent = result.title;
+            testResultText.textContent = result.description;
+            testResultScore.textContent = `نتيجتك: ${score} من ${testQuestions.length}`;
+
+            testQuestionContainer.style.display = 'none';
+            testResult.style.display = 'block';
+
+            const today = new Date().toISOString();
+            userData.tests.push({
+                date: today,
+                score: score
+            });
+            testCount.textContent = userData.tests.length;
+            saveUserData();
+        }
+
+        // Setup profile
+        function setupProfile() {
+            profileAvatar.textContent = userData.name.charAt(0);
+            profileName.textContent = userData.name;
+        }
+
+        // Update emotion chart
+        function updateEmotionChart() {
+            emotionChart.innerHTML = '';
+
+            const lastWeekEmotions = {};
+            const today = new Date();
+
+            for (let i = 6; i >= 0; i--) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                const dateStr = date.toISOString().split('T')[0];
+                lastWeekEmotions[dateStr] = 0;
+            }
+
+            userData.emotions.forEach(entry => {
+                const date = entry.date.split('T')[0];
+                if (lastWeekEmotions.hasOwnProperty(date)) {
+                    lastWeekEmotions[date]++;
+                }
+            });
+
+            const maxValue = Math.max(1, ...Object.values(lastWeekEmotions));
+
+            Object.entries(lastWeekEmotions).forEach(([date, count]) => {
+                const day = new Date(date).toLocaleDateString('ar-EG', { weekday: 'short' });
+                const height = (count / maxValue) * 150;
+
+                const bar = document.createElement('div');
+                bar.className = 'chart-bar';
+                bar.style.height = `${height}px`;
+                bar.innerHTML = `<span class="chart-label">${day}</span>`;
+
+                if (count > 0) {
+                    bar.title = `${count} تسجيل في ${date}`;
+                }
+
+                emotionChart.appendChild(bar);
+            });
+        }
+
+        // Check and update streak
+        function checkStreak() {
+            const today = new Date().toISOString().split('T')[0];
+
+            if (userData.lastVisit === today) {
+                return;
+            }
+
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            const yesterdayStr = yesterday.toISOString().split('T')[0];
+
+            if (userData.lastVisit === yesterdayStr) {
+                userData.streak++;
+            } else if (userData.lastVisit !== today) {
+                userData.streak = 1;
+            }
+
+            userData.lastVisit = today;
+            streakValue.textContent = userData.streak;
+            saveUserData();
+        }
+
+        // Show notification
+        function showNotification(message, duration = 3000, type = "success") {
+            notification.textContent = message;
+            notification.className = 'notification';
+            notification.classList.add(type);
+            notification.style.display = 'block';
+
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, duration);
+        }
+
+        // Toggle calm mode
+        function toggleCalmMode() {
+            document.body.classList.toggle('calm-mode');
+
+            if (document.body.classList.contains('calm-mode')) {
+                breathingCircle.style.display = 'block';
+                breathingInstruction.style.display = 'block';
+                breathingInstruction.textContent = "تنفس بعمق مع الدائرة...";
+
+                let breatheIn = true;
+                setInterval(() => {
+                    breatheIn = !breatheIn;
+                    breathingInstruction.textContent = breatheIn ? "شهيق..." : "زفير...";
+                }, 3000);
+            } else {
+                breathingCircle.style.display = 'none';
+                breathingInstruction.style.display = 'none';
+            }
+        }
+
+        // Reset all user data
+        function resetUserData() {
+            userData = {
+                name: "زائر",
+                reflections: [],
+                emotions: [],
+                tests: [],
+                powerCards: 0,
+                lastVisit: null,
+                streak: 0
+            };
+
+            saveUserData();
+
+            profileName.textContent = userData.name;
+            profileAvatar.textContent = userData.name.charAt(0);
+            reflectionCount.textContent = 0;
+            emotionCheckCount.textContent = 0;
+            testCount.textContent = 0;
+            powerCardsCount.textContent = 0;
+            streakValue.textContent = 0;
+
+            savedEntries.innerHTML = '<h3 class="history-title">إجاباتك السابقة</h3>';
+            updateEmotionChart();
+
+            if (testResult.style.display === 'block') {
+                setupTest();
+            }
+
+            showNotification("تم مسح جميع البيانات بنجاح", 3000, "success");
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            navTabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const sectionId = tab.getAttribute('data-section');
+
+                    navTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === sectionId) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+
+            newQuestionBtn.addEventListener('click', setupReflectionQuestion);
+            saveBtn.addEventListener('click', saveReflection);
+
+            document.querySelectorAll('.test-option').forEach(option => {
+                option.addEventListener('click', (e) => {
+                    selectTestAnswer(e.target.getAttribute('data-answer'));
+                });
+            });
+
+            nextQuestionBtn.addEventListener('click', nextTestQuestion);
+            prevQuestionBtn.addEventListener('click', prevTestQuestion);
+            restartTestBtn.addEventListener('click', setupTest);
+
+            profileEdit.addEventListener('click', () => {
+                nameInput.value = userData.name;
+                nameModal.style.display = 'flex';
+            });
+
+            cancelNameBtn.addEventListener('click', () => {
+                nameModal.style.display = 'none';
+            });
+
+            confirmNameBtn.addEventListener('click', () => {
+                const newName = nameInput.value.trim();
+                if (newName !== '') {
+                    userData.name = newName;
+                    profileName.textContent = newName;
+                    profileAvatar.textContent = newName.charAt(0);
+                    nameModal.style.display = 'none';
+                    saveUserData();
+                    showNotification("تم تغيير الاسم بنجاح!", 3000, "success");
+                }
+            });
+
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                themeToggle.innerHTML = document.body.classList.contains('dark-mode') ?
+                    '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                saveTheme();
+            });
+
+            calmToggle.addEventListener('click', () => {
+                toggleCalmMode();
+                saveTheme();
+            });
+
+            document.getElementById('resetBtn').addEventListener('click', () => {
+                resetModal.style.display = 'flex';
+            });
+
+            cancelResetBtn.addEventListener('click', () => {
+                resetModal.style.display = 'none';
+            });
+
+            confirmResetBtn.addEventListener('click', () => {
+                resetUserData();
+                resetModal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === nameModal || e.target === resetModal) {
+                    nameModal.style.display = 'none';
+                    resetModal.style.display = 'none';
+                }
+            });
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+
+</html>
